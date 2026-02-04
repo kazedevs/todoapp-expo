@@ -1,10 +1,16 @@
-import { Text, View, StyleSheet } from "react-native";
+import { useTheme } from "@/hooks/useTheme";
+import { LinearGradient } from "expo-linear-gradient";
+import { StyleSheet, Text } from "react-native";
+
 export default function Settings() {
+  const { colors } = useTheme();
   return (
-    <View style={styles.container}
+    <LinearGradient
+      colors={colors.gradients.background}
+      style={styles.container}
     >
-      <Text>Setting</Text>
-    </View>
+      <Text style={[styles.text, { color: colors.text }]}>Setting</Text>
+    </LinearGradient>
   );
 }
 
@@ -13,6 +19,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "skyblue"
-  }
-})
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+});

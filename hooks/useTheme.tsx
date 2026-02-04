@@ -1,5 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 export interface ColorScheme {
   bg: string;
@@ -30,25 +36,25 @@ export interface ColorScheme {
 }
 
 const lightColors: ColorScheme = {
-  bg: "#f8fafc",
+  bg: "#f8fafc", // Slate 50
   surface: "#ffffff",
-  text: "#1e293b",
-  textMuted: "#64748b",
-  border: "#e2e8f0",
-  primary: "#3b82f6",
-  success: "#10b981",
-  warning: "#f59e0b",
-  danger: "#ef4444",
-  shadow: "#000000",
+  text: "#0f172a", // Slate 900
+  textMuted: "#475569", // Slate 600
+  border: "#cbd5e1", // Slate 300
+  primary: "#6366f1", // Indigo 500
+  success: "#22c55e", // Green 500
+  warning: "#f59e0b", // Amber 500
+  danger: "#ef4444", // Red 500
+  shadow: "#94a3b8",
   gradients: {
-    background: ["#f8fafc", "#e2e8f0"],
+    background: ["#f8fafc", "#e0e7ff"], // Slate 50 -> Indigo 100 (Cool, punchy light mode)
     surface: ["#ffffff", "#f8fafc"],
-    primary: ["#3b82f6", "#1d4ed8"],
-    success: ["#10b981", "#059669"],
+    primary: ["#6366f1", "#4f46e5"],
+    success: ["#22c55e", "#16a34a"],
     warning: ["#f59e0b", "#d97706"],
     danger: ["#ef4444", "#dc2626"],
-    muted: ["#9ca3af", "#6b7280"],
-    empty: ["#f3f4f6", "#e5e7eb"],
+    muted: ["#94a3b8", "#64748b"],
+    empty: ["#f1f5f9", "#e2e8f0"],
   },
   backgrounds: {
     input: "#ffffff",
@@ -58,25 +64,25 @@ const lightColors: ColorScheme = {
 };
 
 const darkColors: ColorScheme = {
-  bg: "#0f172a",
-  surface: "#1e293b",
-  text: "#f1f5f9",
+  bg: "#020617", // Slate 950
+  surface: "#0f172a", // Slate 900
+  text: "#f8fafc",
   textMuted: "#94a3b8",
-  border: "#334155",
-  primary: "#60a5fa",
-  success: "#34d399",
-  warning: "#fbbf24",
-  danger: "#f87171",
+  border: "#1e293b",
+  primary: "#818cf8", // Indigo 400
+  success: "#4ade80", // Green 400
+  warning: "#fbbf24", // Amber 400
+  danger: "#f87171", // Red 400
   shadow: "#000000",
   gradients: {
-    background: ["#0f172a", "#1e293b"],
-    surface: ["#1e293b", "#334155"],
-    primary: ["#3b82f6", "#1d4ed8"],
-    success: ["#10b981", "#059669"],
-    warning: ["#f59e0b", "#d97706"],
-    danger: ["#ef4444", "#dc2626"],
-    muted: ["#374151", "#4b5563"],
-    empty: ["#374151", "#4b5563"],
+    background: ["#020617", "#1e1b4b"], // Deep dark to indigo tint
+    surface: ["#0f172a", "#1e293b"],
+    primary: ["#818cf8", "#6366f1"],
+    success: ["#4ade80", "#22c55e"],
+    warning: ["#fbbf24", "#f59e0b"],
+    danger: ["#f87171", "#ef4444"],
+    muted: ["#4b5563", "#374151"],
+    empty: ["#1e293b", "#334155"],
   },
   backgrounds: {
     input: "#1e293b",
@@ -119,9 +125,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-  if(context === undefined) {
+  if (context === undefined) {
     throw new Error("useTheme must be used within ThemeProvider");
   }
   return context;
-}
-
+};
