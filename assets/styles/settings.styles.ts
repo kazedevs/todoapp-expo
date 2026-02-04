@@ -12,7 +12,6 @@ export const createSettingsStyles = (colors: ColorScheme) => {
     header: {
       paddingHorizontal: 24,
       paddingVertical: 32,
-      paddingBottom: 24,
     },
     titleContainer: {
       flexDirection: "row",
@@ -154,6 +153,37 @@ export const createSettingsStyles = (colors: ColorScheme) => {
       fontSize: 17,
       fontWeight: "600",
       color: colors.danger,
+    },
+    statsRow: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      backgroundColor: colors.surface,
+      borderRadius: 16,
+      padding: 16,
+      borderWidth: 1,
+      borderColor: colors.border,
+    },
+    statItem: {
+      alignItems: "center",
+      flex: 1,
+    },
+    statDivider: {
+      width: 1,
+      height: 32,
+      backgroundColor: colors.border,
+    },
+    statNumberMinimal: {
+      fontSize: 24,
+      fontWeight: "700",
+      letterSpacing: -0.5,
+      color: colors.text,
+      marginBottom: 4,
+    },
+    statLabelMinimal: {
+      fontSize: 13,
+      fontWeight: "500",
+      color: colors.textMuted,
     },
   });
 
